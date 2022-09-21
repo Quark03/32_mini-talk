@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:23:33 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/21 16:52:48 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/21 17:09:02 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	send_message(int pid, char *str)
 				kill(pid, SIGUSR2);
 			else
 				kill(pid, SIGUSR1);
-			usleep(1000);
+			usleep(500);
 			vars.current_bit++;
 		}
 		vars.i++;
