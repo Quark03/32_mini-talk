@@ -1,31 +1,30 @@
-SERVER = server
-CLIENT = client
+NAME_SERVER = server
+NAME_CLIENT = client
 
 COMPILE = gcc -Wall -Wextra -Werror
-LIBFT = ./libft/libft.a
+
+LIBFT_SRC = $(wildcard ./libft/*.c)
 
 CLIENT_SRC = ./src/client.c
-SERVER_SRC = ./src/server.c
-
+CLIENT_SRC += $(LIBFT_SRC)
 CLIENT_OBJ = $(CLIENT_SRC:.c=.o)
+
+SERVER_SRC = ./src/server.c
+SERVER_SRC += $(LIBFT_SRC)
 SERVER_OBJ = $(SERVER_SRC:.c=.o)
 
 REMOVE = rm -f
 
-all:	$(CLIENT) $(SERVER)
+all:	$(NAME_CLIENT) $(NAME_SERVER)
+
+$(NAME_SERVER): $(SERVER_OBJ)
+	$(COMPILE) $(SERVER_OBJ) -o $(NAME_SERVER)
+
+$(NAME_CLIENT): $(CLIENT_OBJ)
+	$(COMPILE)  $(CLIENT_OBJ) -o $(NAME_CLIENT)
 
 .c.o:
 	$(COMPILE) -c $< -o $@
-
-$(CLIENT):	$(LIBFT) 
-	$(COMPILE) $(CLIENT_OBJ) $(LIBFT) -o $(CLIENT)
-
-$(SERVER):	$(LIBFT) 
-	$(COMPILE) $(SERVER_OBJ) $(LIBFT) -o $(SERVER)
-
-$(LIBFT):
-	cd libft && make
-	cd ..
 
 clean:
 	$(REMOVE) $(CLIENT_OBJ)
@@ -33,9 +32,8 @@ clean:
 
 fclean: clean
 	$(REMOVE) $(LIBFT)
-	$(REMOVE) $(CLIENT)
-	$(REMOVE) $(SERVER)
-
+	$(REMOVE) $(NAME_CLIENT)
+	$(REMOVE) $(NAME_SERVER)
 
 re: fclean all
 

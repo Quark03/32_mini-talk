@@ -1,1 +1,7 @@
+# File Patterns
 .nfs*
+*.o
+
+# Executables
+client
+server
