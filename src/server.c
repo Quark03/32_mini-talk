@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acinca-f <acinca-f@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:23:29 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/21 16:54:13 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/25 09:58:42 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include <sys/types.h>
 #include <unistd.h>
+#include <signal.h>
+
 
 // 1. Get a string
 // 2. Split into chars
